@@ -1,70 +1,141 @@
-# Getting Started with Create React App
+🪲 React Debugging Checkpoint
+📋 Project Overview
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is part of a debugging checkpoint activity designed to practice identifying and fixing common issues in a React application using React Developer Tools.
+The app consists of simple components that demonstrate state, props, and component communication.
 
-## Available Scripts
+🎯 Objective
 
-In the project directory, you can run:
+The goal of this project is to:
 
-### `npm start`
+Use React Developer Tools to inspect components and their props/state.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Identify bugs (such as missing props or incorrect state usage).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Fix the issues and confirm that the app behaves as expected after debugging.
 
-### `npm test`
+🧠 Learning Outcomes
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+By completing this checkpoint, you’ll learn how to:
 
-### `npm run build`
+Inspect React components in the browser.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Detect problems with props and state.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Debug using React Developer Tools.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Understand how data flows between parent and child components.
 
-### `npm run eject`
+⚙️ Setup Instructions
+1. Clone or Create the Project
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+If starting fresh:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+npx create-react-app react-debug-checkpoint
+cd react-debug-checkpoint
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. Run the Development Server
+npm start
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+Your app will open in the browser at:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+http://localhost:3000
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+🧩 Project Structure
+src/
+│
+├── App.js          # Main component that renders Greeting and Counter
+├── Greeting.js     # Displays a greeting message using a name prop
+├── Counter.js      # Displays and updates a counter using state
+└── index.js        # Entry point of the app
 
-### Code Splitting
+🧱 Component Summary
+App.js
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Holds two pieces of state: name and count.
 
-### Analyzing the Bundle Size
+Passes data to child components as props.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Initially had a bug where Greeting did not receive the name prop.
 
-### Making a Progressive Web App
+Greeting.js
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Receives a prop name and displays “Hello, {name} 👋”.
 
-### Advanced Configuration
+Initially displayed “Hello, 👋” (undefined name) due to the missing prop.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Counter.js
 
-### Deployment
+Displays the count and allows increment, decrement, and reset using buttons.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+🐞 Bug Identified
 
-### `npm run build` fails to minify
+Issue:
+Greeting component showed Hello, 👋 instead of Hello, Brian 👋.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Cause:
+App.js forgot to pass the name prop to Greeting.
+
+// Before debugging
+<Greeting />
+
+
+Fix:
+Pass the name state as a prop.
+
+// After debugging
+<Greeting name={name} />
+
+🔧 Debugging Process
+
+Opened the app in the browser (npm start).
+
+Installed React Developer Tools (Chrome extension).
+
+Opened React tab in DevTools and inspected the component tree.
+
+Clicked on <Greeting> and saw:
+
+props: { name: undefined }
+
+
+Identified the issue (missing prop).
+
+Updated App.js to pass name correctly.
+
+Verified the fix — app now displays Hello, Brian 👋.
+
+🧪 Verification
+
+After fixing:
+
+The greeting displays the correct name.
+
+All counter buttons work properly.
+
+No major warnings or errors remain.
+🧾 Final Output
+
+After debugging, your app should display something like this:
+
+React Debugging Checkpoint
+Hello, Brian 👋
+Count: 0
+[Increment] [Decrement] [Reset]
+
+🧰 Tools Used
+
+React (Create React App)
+
+React Developer Tools (Chrome Extension)
+
+VS Code / Cursor
+
+Git Bash or Terminal
+
+🧑‍💻 Author
+
+Brian Okech Wade
+React Debugging Checkpoint Project
+📅 October 2025
